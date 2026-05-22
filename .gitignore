@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+.vite/
+build/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Netlify
+.netlify/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Stripe CLI
+stripe.log
+
+# Heavy source assets that should not bloat the repo (Photoshop)
+public/bol afbeeldingen/*.psd
+
+# Original 360 PNG sequence — kept local for hi-res use, but too heavy for git
+# (598 MB total). De website gebruikt public/360-web/ (JPG, 6 MB) wel via git.
+public/360/

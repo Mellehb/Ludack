@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ink: #0A0A0A;
+  --color-bone: #FFFFFF;
+  --color-sand: #C9B79C;
+  --color-sand-soft: #EDE5D6;
+  --color-ash: #6B6B6B;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bone text-ink font-sans;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+
+  ::selection {
+    background-color: var(--color-ink);
+    color: var(--color-bone);
+  }
+
+  h1, h2, h3 {
+    @apply font-display tracking-tight;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-widest2 text-sand;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-bone transition-all duration-300 ease-brand-out hover:bg-ink/90 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/20 bg-bone px-7 py-3.5 text-sm font-medium text-ink transition-all duration-300 ease-brand-out hover:border-ink hover:bg-ink hover:text-bone;
+  }
+
+  .btn-sand {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-sand px-7 py-3.5 text-sm font-semibold tracking-wide text-ink transition-all duration-300 ease-brand-out hover:bg-sand/90 hover:scale-[1.02] active:scale-[0.98];
+  }
+}
+
+/* Hide scrollbar for the cap variant thumbnail strip */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
