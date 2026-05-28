@@ -21,7 +21,7 @@ export const products: Product[] = [
     tagline: 'Zwart',
     variant: 'black',
     priceId: 'price_1Tbg9KP4vQykj09Mey9SPMzg',
-    amount: 3495,
+    amount: 3995,
     image: '/bol afbeeldingen/ludack-cap-zwart-voorkant.jpg',
     images: {
       front: '/bol afbeeldingen/ludack-cap-zwart-voorkant.jpg',
@@ -35,7 +35,7 @@ export const products: Product[] = [
     tagline: 'Kaki',
     variant: 'kaki',
     priceId: 'price_1Tbg9jP4vQykj09M7hGHtIJa',
-    amount: 3495,
+    amount: 3995,
     image: '/bol afbeeldingen/ludack-cap-kaki-voorkant.jpg',
     images: {
       front: '/bol afbeeldingen/ludack-cap-kaki-voorkant.jpg',
@@ -49,7 +49,7 @@ export const products: Product[] = [
     tagline: '2 Caps — Zwart + Kaki',
     variant: 'combi',
     priceId: 'price_1TbhlxP4vQykj09M9vtTyL5g',
-    amount: 6495,
+    amount: 7495,
     compareAt: 7990,
     image: '/bol afbeeldingen/ludack-cap-zwart-voorkant.jpg',
     images: {
