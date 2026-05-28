@@ -44,13 +44,13 @@ export function Features() {
           className="max-w-2xl"
         >
           <motion.span variants={fadeUp} className="eyebrow">
-            Waarom Ludack
+            01 — Kwaliteit
           </motion.span>
           <motion.h2
             variants={fadeUp}
             className="mt-4 font-display text-[clamp(2rem,4.5vw,3.4rem)] font-medium leading-[1.05]"
           >
-            Detail boven trend.
+            Detail boven <span className="italic text-sand">trend</span>.
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-4 text-ash">
             Elk onderdeel is gekozen voor hoe het draagt op dag duizend — niet alleen dag één.

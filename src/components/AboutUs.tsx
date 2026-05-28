@@ -27,14 +27,14 @@ export function AboutUs() {
           viewport={viewportOnce}
         >
           <motion.span variants={fadeUp} className="eyebrow">
-            Over Ludack
+            05 — Over Ludack
           </motion.span>
 
           <motion.h2
             variants={fadeUp}
             className="mt-4 font-display text-[clamp(2rem,4.5vw,3.4rem)] font-medium leading-[1.05]"
           >
-            Een merk geboren uit detail.
+            Een merk geboren uit <span className="italic text-sand">detail</span>.
           </motion.h2>
 
           <motion.div variants={fadeUp} className="mt-6 space-y-4 text-base leading-relaxed text-ink/80">

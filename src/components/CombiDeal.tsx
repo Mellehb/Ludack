@@ -69,14 +69,14 @@ export function CombiDeal() {
           className="relative"
         >
           <motion.span variants={fadeUp} className="eyebrow text-sand">
-            Combi Deal — Drop 01
+            07 — Combi Deal
           </motion.span>
 
           <motion.h2
             variants={fadeUp}
             className="mt-4 font-display text-[clamp(2.2rem,5vw,4rem)] font-medium leading-[1.02]"
           >
-            Twee caps, één deal.
+            Twee caps, <span className="italic text-sand">één deal</span>.
           </motion.h2>
 
           <motion.p variants={fadeUp} className="mt-5 max-w-lg text-bone/65">

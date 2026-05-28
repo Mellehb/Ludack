@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { usePreload360 } from '@/hooks/usePreload360';
 
 type Variant = 'black' | 'kaki';
@@ -9,34 +8,36 @@ type Props = {
   className?: string;
 };
 
-const TOTAL_FRAMES = 144;
-const AUTO_ROTATE_MS = 70; // 70ms × 144 ≈ 10s per 360° (snappy maar premium)
+const AUTO_ROTATE_MS = 120; // 120ms × 36 ≈ 4.3s per 360° (rustig, premium)
 const DRAG_PIXELS_PER_FRAME = 6;
 
-const blackFrames = (): string[] =>
-  Array.from({ length: TOTAL_FRAMES }, (_, i) => {
-    const n = String(i + 1).padStart(3, '0');
+// /360-web/ bevat beide varianten in één map:
+//   frames 001–036 = zwarte cap (volledige 360°)
+//   frames 037–072 = kaki cap   (volledige 360°; 073–144 herhaalt dezelfde rotatie)
+const framesInRange = (start: number, end: number): string[] =>
+  Array.from({ length: end - start + 1 }, (_, i) => {
+    const n = String(start + i).padStart(3, '0');
     return `/360-web/frame_${n}.jpg`;
   });
 
-// Kaki: nog geen 360°-sequentie. Toon statische gallery met cross-fade.
-const kakiGallery = [
-  '/bol afbeeldingen/ludack-cap-kaki-voorkant.jpg',
-  '/bol afbeeldingen/ludack-cap-kaki-zijkant.jpg',
-  '/bol afbeeldingen/ludack-cap-kaki-achterkant.jpg',
-  '/bol afbeeldingen/cap kaki binnenkant.jpg',
-];
+const FRAME_SETS: Record<Variant, string[]> = {
+  black: framesInRange(1, 36),
+  kaki: framesInRange(37, 72),
+};
+
+const VARIANT_LABEL: Record<Variant, string> = {
+  black: 'zwart',
+  kaki: 'kaki',
+};
 
 export function CapViewer360({ variant, className = '' }: Props) {
-  if (variant === 'kaki') return <KakiGallery className={className} />;
-  return <BlackRotator className={className} />;
+  return <Rotator variant={variant} className={className} />;
 }
 
-/* ---------- Zwarte cap: 360° rotator ---------- */
-
-function BlackRotator({ className }: { className?: string }) {
-  const frames = useMemo(() => blackFrames(), []);
-  const { ready, loaded, total } = usePreload360(frames);
+function Rotator({ variant, className = '' }: Props) {
+  const frames = useMemo(() => FRAME_SETS[variant], [variant]);
+  const total = frames.length;
+  const { ready, loaded } = usePreload360(frames);
   const [index, setIndex] = useState(0);
   const [isDragging, setDragging] = useState(false);
   const dragStartX = useRef(0);
@@ -46,6 +47,11 @@ function BlackRotator({ className }: { className?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const reducedMotion = usePrefersReducedMotion();
 
+  // Terug naar het eerste frame zodra je van variant wisselt.
+  useEffect(() => {
+    setIndex(0);
+  }, [variant]);
+
   // Auto-rotate
   useEffect(() => {
     if (!ready || isDragging || reducedMotion) return;
@@ -53,7 +59,7 @@ function BlackRotator({ className }: { className?: string }) {
     const tick = (t: number) => {
       if (!lastTickRef.current) lastTickRef.current = t;
       if (t - lastTickRef.current >= AUTO_ROTATE_MS) {
-        setIndex((i) => (i + 1) % TOTAL_FRAMES);
+        setIndex((i) => (i + 1) % total);
         lastTickRef.current = t;
       }
       rafRef.current = requestAnimationFrame(tick);
@@ -64,7 +70,7 @@ function BlackRotator({ className }: { className?: string }) {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       lastTickRef.current = 0;
     };
-  }, [ready, isDragging, reducedMotion]);
+  }, [ready, isDragging, reducedMotion, total]);
 
   // Pointer drag
   const onPointerDown = (e: React.PointerEvent) => {
@@ -77,7 +83,7 @@ function BlackRotator({ className }: { className?: string }) {
     if (!isDragging) return;
     const delta = e.clientX - dragStartX.current;
     const frameDelta = Math.round(delta / DRAG_PIXELS_PER_FRAME);
-    const next = ((dragStartIndex.current - frameDelta) % TOTAL_FRAMES + TOTAL_FRAMES) % TOTAL_FRAMES;
+    const next = ((dragStartIndex.current - frameDelta) % total + total) % total;
     setIndex(next);
   };
   const onPointerUp = (e: React.PointerEvent) => {
@@ -100,7 +106,7 @@ function BlackRotator({ className }: { className?: string }) {
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}
       style={{ touchAction: 'pan-y', cursor: isDragging ? 'grabbing' : 'grab' }}
-      aria-label="360 graden viewer — sleep om te draaien"
+      aria-label={`360 graden viewer — Ludack cap ${VARIANT_LABEL[variant]}, sleep om te draaien`}
       role="img"
     >
       {!ready && (
@@ -117,10 +123,9 @@ function BlackRotator({ className }: { className?: string }) {
         </div>
       )}
 
-      {/* Hidden img preloader is handled by usePreload360. We render the current frame. */}
       <img
         src={frames[index]}
-        alt={`Ludack cap zwart — frame ${index + 1}`}
+        alt={`Ludack cap ${VARIANT_LABEL[variant]} — frame ${index + 1}`}
         className={`block h-full w-full object-contain transition-opacity duration-300 ${ready ? 'opacity-100' : 'opacity-0'}`}
         draggable={false}
       />
@@ -141,53 +146,6 @@ function RotateIcon() {
       <path d="M21 12a9 9 0 1 1-3-6.7" />
       <path d="M21 4v5h-5" />
     </svg>
-  );
-}
-
-/* ---------- Kaki: statische gallery met cross-fade ---------- */
-
-function KakiGallery({ className }: { className?: string }) {
-  const [index, setIndex] = useState(0);
-  const reducedMotion = usePrefersReducedMotion();
-
-  useEffect(() => {
-    if (reducedMotion) return;
-    const id = setInterval(() => {
-      setIndex((i) => (i + 1) % kakiGallery.length);
-    }, 3200);
-    return () => clearInterval(id);
-  }, [reducedMotion]);
-
-  return (
-    <div className={`relative overflow-hidden ${className}`} aria-label="Ludack cap kaki — afbeeldingen">
-      <AnimatePresence mode="sync">
-        <motion.img
-          key={kakiGallery[index]}
-          src={kakiGallery[index]}
-          alt={`Ludack cap kaki — view ${index + 1}`}
-          initial={{ opacity: 0, scale: 1.02 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-0 h-full w-full object-contain"
-          draggable={false}
-        />
-      </AnimatePresence>
-
-      <div className="pointer-events-auto absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
-        {kakiGallery.map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            aria-label={`Bekijk afbeelding ${i + 1}`}
-            onClick={() => setIndex(i)}
-            className={`h-1.5 rounded-full transition-all ${
-              i === index ? 'w-6 bg-ink' : 'w-1.5 bg-ink/30'
-            }`}
-          />
-        ))}
-      </div>
-    </div>
   );
 }
 

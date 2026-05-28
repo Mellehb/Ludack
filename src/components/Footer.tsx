@@ -80,6 +80,14 @@ export function Footer() {
             <span>KvK: 00000000</span>
             <a href="#about" className="hover:text-bone/70">Algemene voorwaarden</a>
             <a href="#about" className="hover:text-bone/70">Privacy</a>
+            <a
+              href="https://aiwebsolutions.nl"
+              target="_blank"
+              rel="noreferrer"
+              className="text-bone/25 transition-colors hover:text-bone/60"
+            >
+              Built by AI Web Solutions
+            </a>
           </p>
         </div>
       </div>

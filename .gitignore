@@ -15,6 +15,7 @@ build/
 
 # Netlify
 .netlify/
+deno.lock
 
 # OS / editor
 .DS_Store
