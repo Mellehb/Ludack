@@ -32,7 +32,7 @@ export const products: Product[] = [
   {
     id: 'cap-kaki',
     name: 'Ludack Cherub Cap',
-    tagline: 'Kaki',
+    tagline: 'Beige',
     variant: 'kaki',
     priceId: 'price_1Tbg9jP4vQykj09M7hGHtIJa',
     amount: 3995,
@@ -41,12 +41,12 @@ export const products: Product[] = [
       front: '/bol afbeeldingen/ludack-cap-kaki-voorkant.jpg',
       back: '/bol afbeeldingen/ludack-cap-kaki-achterkant.jpg',
     },
-    description: 'Natural canvas kaki. Script embroidery voorkant, cherub back graphic, LX side logo.',
+    description: 'Beige premium canvas. Script embroidery voorkant, cherub back graphic, LX side logo.',
   },
   {
     id: 'combi-deal',
     name: 'Cherub Combi Deal',
-    tagline: '2 Caps — Zwart + Kaki',
+    tagline: '2 Caps — Zwart + Beige',
     variant: 'combi',
     priceId: 'price_1TbhlxP4vQykj09M9vtTyL5g',
     amount: 7495,
@@ -56,7 +56,7 @@ export const products: Product[] = [
       front: '/bol afbeeldingen/ludack-cap-zwart-voorkant.jpg',
       back: '/bol afbeeldingen/ludack-cap-kaki-voorkant.jpg',
     },
-    description: 'Pak beide kleuren — zwart voor elke dag, kaki voor wanneer je iets wil zeggen.',
+    description: 'Pak beide kleuren — zwart voor elke dag, beige voor wanneer je iets wil zeggen.',
   },
 ];
 

@@ -51,7 +51,7 @@ export function CombiDeal() {
             />
             <img
               src="/bol afbeeldingen/ludack-cap-kaki-voorkant.jpg"
-              alt="Ludack kaki cap"
+              alt="Ludack beige cap"
               className="absolute right-0 top-1/2 w-[62%] -translate-y-1/2 rotate-[6deg] rounded-2xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]"
             />
             <span className="absolute left-1/2 top-6 -translate-x-1/2 rounded-full bg-sand px-4 py-1.5 text-[10px] font-semibold uppercase tracking-widest2 text-ink shadow-lg">
@@ -69,7 +69,7 @@ export function CombiDeal() {
           className="relative"
         >
           <motion.span variants={fadeUp} className="eyebrow text-sand">
-            07 — Combi Deal
+            06 — Combi Deal
           </motion.span>
 
           <motion.h2
@@ -80,7 +80,7 @@ export function CombiDeal() {
           </motion.h2>
 
           <motion.p variants={fadeUp} className="mt-5 max-w-lg text-bone/65">
-            Pak ze allebei. Zwart voor elke dag, kaki voor wanneer je iets wil zeggen — voor minder dan apart.
+            Pak ze allebei. Zwart voor elke dag, beige voor wanneer je iets wil zeggen — voor minder dan apart.
           </motion.p>
 
           {/* Pricing */}
@@ -102,6 +102,9 @@ export function CombiDeal() {
                   <ul className="mt-2 flex flex-col gap-1 text-xs text-ink/70">
                     <li className="flex items-center gap-1.5">
                       <Check size={12} strokeWidth={2.5} /> Beide kleuren inbegrepen
+                    </li>
+                    <li className="flex items-center gap-1.5">
+                      <Check size={12} strokeWidth={2.5} /> Gratis cap-houders inbegrepen
                     </li>
                     <li className="flex items-center gap-1.5">
                       <Check size={12} strokeWidth={2.5} /> Gratis verzending

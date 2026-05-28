@@ -13,8 +13,8 @@ export function AboutUs() {
           className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-ink/5"
         >
           <img
-            src="/bol afbeeldingen/cap-hangsysteem.jpg"
-            alt="Ludack hangsysteem"
+            src="/bol afbeeldingen/ludack-cap-zwarti-achterkant.jpg"
+            alt="Ludack cap — cherub back graphic, detail van de afwerking"
             className="h-full w-full object-cover"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-ink/30 via-transparent to-transparent" />
@@ -27,7 +27,7 @@ export function AboutUs() {
           viewport={viewportOnce}
         >
           <motion.span variants={fadeUp} className="eyebrow">
-            05 — Over Ludack
+            04 — Over Ludack
           </motion.span>
 
           <motion.h2

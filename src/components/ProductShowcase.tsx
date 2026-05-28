@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Check, Minus, Plus } from 'lucide-react';
+import { Check, Gift, Minus, Plus } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { products, formatPrice, type Product } from '@/lib/products';
 import { fadeUp, staggerParent, viewportOnce } from '@/lib/motion';
@@ -182,6 +182,12 @@ function ProductCard({ product }: { product: Product }) {
             />
           </div>
         </div>
+
+        {/* Subtiel cadeau-detail */}
+        <p className="mt-4 flex items-center gap-1.5 text-[11px] text-ash">
+          <Gift size={12} strokeWidth={1.8} className="text-sand" />
+          Inclusief gratis cap-houder
+        </p>
 
         {/* Quantity + CTA */}
         <div className="mt-5 flex items-stretch gap-3">

@@ -23,14 +23,14 @@ export function InMotion() {
         >
           <div>
             <motion.span variants={fadeUp} className="eyebrow text-bone/50">
-              03 — In motion
+              03 — Lifestyle
             </motion.span>
             <motion.h2
               variants={fadeUp}
               className="mt-4 max-w-2xl font-display text-[clamp(2.2rem,5.5vw,4.2rem)] font-medium leading-[1.02]"
             >
-              Beide kleuren,<br />
-              <span className="italic text-sand">vanuit elke hoek</span>
+              Made for the streets.<br />
+              <span className="italic text-sand">Built to last.</span>
             </motion.h2>
           </div>
           <motion.a

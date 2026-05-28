@@ -27,7 +27,7 @@ const FRAME_SETS: Record<Variant, string[]> = {
 
 const VARIANT_LABEL: Record<Variant, string> = {
   black: 'zwart',
-  kaki: 'kaki',
+  kaki: 'beige',
 };
 
 export function CapViewer360({ variant, className = '' }: Props) {

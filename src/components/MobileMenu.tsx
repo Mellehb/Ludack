@@ -13,7 +13,7 @@ type Props = {
 const collections = [
   { label: 'Drop 01 — Limited', href: '#collecties' },
   { label: 'The Black Cap', href: '#hero' },
-  { label: 'The Kaki Cap', href: '#hero' },
+  { label: 'The Beige Cap', href: '#hero' },
 ];
 
 const containerVariants = {

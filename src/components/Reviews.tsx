@@ -15,7 +15,7 @@ export function Reviews() {
           className="max-w-3xl"
         >
           <motion.span variants={fadeUp} className="eyebrow">
-            06 — Reviews
+            05 — Reviews
           </motion.span>
           <motion.h2
             variants={fadeUp}

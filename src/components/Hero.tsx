@@ -33,7 +33,7 @@ export function Hero() {
             variants={fadeUp}
             className="mt-5 font-display text-[clamp(2.6rem,6vw,4.8rem)] font-medium leading-[1.05] tracking-tight"
           >
-            Pets die <em className="not-italic text-sand">jouw</em> verhaal vertellen.
+            Caps die <em className="not-italic text-sand">jouw</em> verhaal vertellen.
           </motion.h1>
 
           <motion.p variants={fadeUp} className="mt-5 max-w-md text-base leading-relaxed text-ash">
@@ -47,7 +47,7 @@ export function Hero() {
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
             </a>
             <a href="#features" className="btn-secondary">
-              Bekijk de petten
+              Bekijk de caps
             </a>
           </motion.div>
 
@@ -88,7 +88,7 @@ export function Hero() {
               onClick={() => setVariant('black')}
             />
             <VariantThumb
-              label="Kaki"
+              label="Beige"
               imgSrc="/bol afbeeldingen/ludack-cap-kaki-voorkant.jpg"
               active={variant === 'kaki'}
               onClick={() => setVariant('kaki')}
