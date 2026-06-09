@@ -77,13 +77,13 @@ function Tile({ product }: { product: Product }) {
         </span>
       </div>
 
-      <div className="relative mt-3 aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-bone via-bone to-sand-soft">
+      <div className="relative mt-3 aspect-[4/5] overflow-hidden rounded-2xl bg-ink">
         <motion.img
-          src={product.image}
+          src={product.lifestyle ?? product.image}
           alt={`${product.name} — ${product.tagline}`}
-          className="absolute inset-0 h-full w-full object-contain p-6"
-          initial={{ scale: 1, rotate: 0 }}
-          whileHover={{ scale: 1.05, rotate: -2 }}
+          className="absolute inset-0 h-full w-full object-cover"
+          initial={{ scale: 1 }}
+          whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/10 via-transparent to-transparent" />

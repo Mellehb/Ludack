@@ -7,6 +7,7 @@ export type Product = {
   amount: number;
   compareAt?: number;
   image: string;
+  lifestyle?: string;
   images: {
     front: string;
     back: string;
@@ -23,6 +24,7 @@ export const products: Product[] = [
     priceId: 'price_1Tbg9KP4vQykj09Mey9SPMzg',
     amount: 3995,
     image: '/bol afbeeldingen/ludack-cap-zwart-voorkant.jpg',
+    lifestyle: '/Ludack Street Black.jpg',
     images: {
       front: '/bol afbeeldingen/ludack-cap-zwart-voorkant.jpg',
       back: '/bol afbeeldingen/ludack-cap-zwarti-achterkant.jpg',
@@ -37,6 +39,7 @@ export const products: Product[] = [
     priceId: 'price_1Tbg9jP4vQykj09M7hGHtIJa',
     amount: 3995,
     image: '/bol afbeeldingen/ludack-cap-kaki-voorkant.jpg',
+    lifestyle: '/Ludack Street Kaki.jpg',
     images: {
       front: '/bol afbeeldingen/ludack-cap-kaki-voorkant.jpg',
       back: '/bol afbeeldingen/ludack-cap-kaki-achterkant.jpg',
