@@ -84,6 +84,12 @@ export const handler: Handler = async (event: HandlerEvent) => {
         allowed_countries: ['NL', 'BE', 'DE', 'FR', 'LU'],
       },
       locale: 'nl',
+      invoice_creation: {
+        enabled: true,
+        invoice_data: {
+          description: 'Clothing purchase',
+        },
+      },
       success_url: `${origin}/?checkout=success&session_id={CHECKOUT_SESSION_ID}#combi-deal`,
       cancel_url: `${origin}/?checkout=cancel#combi-deal`,
       metadata: {
