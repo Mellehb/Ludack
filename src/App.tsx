@@ -6,6 +6,7 @@ import { ProductShowcase } from './components/ProductShowcase';
 import { InMotion } from './components/InMotion';
 import { AboutUs } from './components/AboutUs';
 import { Reviews } from './components/Reviews';
+import { LocalGooi } from './components/LocalGooi';
 import { CombiDeal } from './components/CombiDeal';
 import { Closer } from './components/Closer';
 import { Footer } from './components/Footer';
@@ -23,6 +24,7 @@ export default function App() {
           <InMotion />
           <AboutUs />
           <Reviews />
+          <LocalGooi />
           <CombiDeal />
           <Closer />
         </main>

@@ -70,7 +70,7 @@ export function LocalGooi() {
             className="mt-7 inline-flex items-center gap-3 rounded-full border border-ink/10 bg-bone/70 px-5 py-2.5 backdrop-blur"
           >
             <span className="grid h-8 w-8 place-items-center rounded-full bg-ink text-bone">
-              <BikeIcon size={15} strokeWidth={1.7} />
+              <Bike size={15} strokeWidth={1.7} />
             </span>
             <span className="text-sm font-medium">
               Gratis lokale bezorging
@@ -176,7 +176,7 @@ export function LocalGooi() {
             <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between rounded-2xl border border-bone/10 bg-bone/[0.06] px-4 py-3 backdrop-blur">
               <div className="flex items-center gap-2.5">
                 <span className="grid h-8 w-8 place-items-center rounded-full bg-sand text-ink">
-                  <BikeIcon size={15} strokeWidth={1.7} />
+                  <Bike size={15} strokeWidth={1.7} />
                 </span>
                 <div className="leading-tight">
                   <p className="text-xs font-medium">Gratis bezorgd</p>

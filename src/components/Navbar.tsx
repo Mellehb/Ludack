@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { href: '#collecties', label: 'Collecties' },
   { href: '#features', label: 'Features' },
   { href: '#about', label: 'Brand' },
+  { href: '#t-gooi', label: "'t Gooi" },
   { href: '#combi-deal', label: 'Combi Deal' },
 ];
 
