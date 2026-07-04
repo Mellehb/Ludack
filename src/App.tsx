@@ -11,8 +11,13 @@ import { CombiDeal } from './components/CombiDeal';
 import { Closer } from './components/Closer';
 import { Footer } from './components/Footer';
 import { CartDrawer } from './components/CartDrawer';
+import { ThankYou } from './components/ThankYou';
 
 export default function App() {
+  if (window.location.pathname === '/bedankt') {
+    return <ThankYou />;
+  }
+
   return (
     <CartProvider>
       <div id="top" className="min-h-screen overflow-x-clip bg-bone text-ink">

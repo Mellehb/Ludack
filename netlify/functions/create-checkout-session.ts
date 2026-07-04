@@ -90,8 +90,8 @@ export const handler: Handler = async (event: HandlerEvent) => {
           description: 'Clothing purchase',
         },
       },
-      success_url: `${origin}/?checkout=success&session_id={CHECKOUT_SESSION_ID}#combi-deal`,
-      cancel_url: `${origin}/?checkout=cancel#combi-deal`,
+      success_url: `${origin}/bedankt?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/#combi-deal`,
       metadata: {
         productIds: body.items.map((i) => i.productId).join(','),
       },
