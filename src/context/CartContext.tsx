@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from 'react';
 import { getProduct } from '@/lib/products';
+import { buildProperties, trackTikTok } from '@/lib/tiktok';
 
 export type CartItem = { productId: string; quantity: number };
 
@@ -28,6 +29,7 @@ type CartContextValue = {
 const CartContext = createContext<CartContextValue | undefined>(undefined);
 
 const STORAGE_KEY = 'ludack:cart';
+const MAX_QUANTITY = 10;
 
 function loadFromStorage(): CartItem[] {
   if (typeof window === 'undefined') return [];
@@ -59,14 +61,18 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const addItem = useCallback((productId: string, quantity: number = 1) => {
     if (!getProduct(productId)) return;
+    // Nooit meer melden dan de cart-limiet toelaat.
+    const added = Math.min(quantity, MAX_QUANTITY);
+    const properties = buildProperties([{ productId, quantity: added }]);
+    if (properties) trackTikTok('AddToCart', properties);
     setItems((prev) => {
       const existing = prev.find((i) => i.productId === productId);
       if (existing) {
         return prev.map((i) =>
-          i.productId === productId ? { ...i, quantity: Math.min(i.quantity + quantity, 10) } : i,
+          i.productId === productId ? { ...i, quantity: Math.min(i.quantity + quantity, MAX_QUANTITY) } : i,
         );
       }
-      return [...prev, { productId, quantity: Math.min(quantity, 10) }];
+      return [...prev, { productId, quantity: Math.min(quantity, MAX_QUANTITY) }];
     });
   }, []);
 
@@ -78,7 +84,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setItems((prev) => {
       if (quantity <= 0) return prev.filter((i) => i.productId !== productId);
       return prev.map((i) =>
-        i.productId === productId ? { ...i, quantity: Math.min(quantity, 10) } : i,
+        i.productId === productId ? { ...i, quantity: Math.min(quantity, MAX_QUANTITY) } : i,
       );
     });
   }, []);
