@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Package, Truck } from 'lucide-react';
 import { fadeUp, staggerParent } from '@/lib/motion';
+import { consumePendingOrder, trackTikTok } from '@/lib/tiktok';
 import { Logo } from './ui/Logo';
 
 export function ThankYou() {
@@ -10,6 +11,13 @@ export function ThankYou() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setSessionId(params.get('session_id'));
+  }, []);
+
+  // Conversie melden aan TikTok. consumePendingOrder() wist de snapshot, dus een
+  // refresh van deze pagina telt de bestelling niet nog een keer mee.
+  useEffect(() => {
+    const order = consumePendingOrder();
+    if (order) trackTikTok('CompletePayment', order);
   }, []);
 
   return (

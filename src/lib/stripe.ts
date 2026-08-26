@@ -1,4 +1,5 @@
 import type { Product } from './products';
+import { buildProperties, rememberPendingOrder, trackTikTok } from './tiktok';
 
 export type CheckoutItem = {
   priceId: string;
@@ -18,6 +19,14 @@ export async function redirectToCheckout(items: CheckoutItem[]): Promise<void> {
         'in een lokaal .env-bestand (kopieer van .env.example).',
     );
     return;
+  }
+
+  // Vóór de redirect: de klant start hier het afrekenen, en /bedankt draait
+  // buiten de CartProvider — dus leggen we de bestelling nu vast.
+  const properties = buildProperties(items);
+  if (properties) {
+    trackTikTok('InitiateCheckout', properties);
+    rememberPendingOrder(properties);
   }
 
   const response = await fetch(CHECKOUT_ENDPOINT, {

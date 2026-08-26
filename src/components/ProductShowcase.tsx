@@ -4,6 +4,7 @@ import { Check, Gift, Minus, Plus } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { products, formatPrice, type Product } from '@/lib/products';
 import { fadeUp, staggerParent, viewportOnce } from '@/lib/motion';
+import { trackProductView } from '@/lib/tiktok';
 
 const SHOWCASE_PRODUCTS = products.filter((p) => p.variant !== 'combi');
 
@@ -61,6 +62,15 @@ function ProductCard({ product }: { product: Product }) {
   const isInView = useInView(imageRef, { margin: '-25% 0px -25% 0px' });
   const isTouch =
     typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches;
+
+  // ViewContent zodra de kaart daadwerkelijk in beeld komt — eenmalig per bezoek,
+  // anders telt elke scroll heen en weer als een nieuwe productweergave.
+  const viewTracked = useRef(false);
+  useEffect(() => {
+    if (!isInView || viewTracked.current) return;
+    viewTracked.current = true;
+    trackProductView(product);
+  }, [isInView, product]);
 
   // Mobile (no hover): auto-flip to the back ~1.2s after the card enters the viewport.
   useEffect(() => {
