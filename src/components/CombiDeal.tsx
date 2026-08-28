@@ -200,7 +200,7 @@ export function CombiDeal() {
               </div>
             ))}
           <div className="flex items-center justify-between border-t border-bone/10 pt-4">
-            <span>Verzending NL</span>
+            <span>Verzending Europa</span>
             <span className="font-display text-base text-bone/70">Gratis</span>
           </div>
         </div>

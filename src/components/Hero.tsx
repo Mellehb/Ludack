@@ -57,7 +57,7 @@ export function Hero() {
             className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-ash"
           >
             <li className="flex items-center gap-2">
-              <Truck size={14} className="text-ink" /> Gratis verzending NL
+              <Truck size={14} className="text-ink" /> Gratis verzending in Europa
             </li>
             <li className="flex items-center gap-2">
               <RotateCcw size={14} className="text-ink" /> 30 dagen retour

@@ -81,7 +81,11 @@ export const handler: Handler = async (event: HandlerEvent) => {
       allow_promotion_codes: true,
       billing_address_collection: 'auto',
       shipping_address_collection: {
-        allowed_countries: ['NL', 'BE', 'DE', 'FR', 'LU'],
+        allowed_countries: [
+          'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI',
+          'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU',
+          'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE',
+        ],
       },
       locale: 'nl',
       invoice_creation: {

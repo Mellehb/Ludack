@@ -192,7 +192,7 @@ export function CartDrawer() {
                   </span>
                 </div>
                 <p className="mt-1 text-[11px] text-ash">
-                  Verzending gratis vanaf €50 — eventuele kosten in de checkout.
+                  Gratis verzending, geen minimumbedrag.
                 </p>
 
                 <button

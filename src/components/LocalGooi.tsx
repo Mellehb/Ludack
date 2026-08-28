@@ -114,7 +114,7 @@ export function LocalGooi() {
           </motion.div>
 
           <motion.p variants={fadeUp} className="mt-5 text-[11px] text-ink/45">
-            Buiten 't Gooi? Geen probleem — bestel via de webshop, gratis verzending vanaf €50.
+            Buiten 't Gooi? Geen probleem — bestel via de webshop, gratis verzending.
           </motion.p>
         </motion.div>
 
